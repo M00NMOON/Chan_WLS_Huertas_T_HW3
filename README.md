@@ -1,6 +1,6 @@
-# Chan_W_Huertas_T_HW1
+# Chan_W_Huertas_T_HW3
 
-This is the homework for OOP, the list of ontario 10 most stolen car.
+This is the Lumen and Vue AJAX Homework
 
 ## Installation
 
