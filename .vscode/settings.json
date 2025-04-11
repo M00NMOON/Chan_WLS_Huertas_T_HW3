@@ -1,0 +1,16 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded", // for unminified version
+      "extensionName": ".css",
+      "savePath": "/cd_shop_frontend/css"
+    },
+    {
+      "format": "compressed", // for minified version
+      "extensionName": ".min.css",
+      "savePath": "/cd_shop_frontend/css"
+    }
+  ],
+  "liveSassCompile.settings.includeItems": ["/cd_shop_frontend/sass/**/*.scss"],
+  "liveSassCompile.settings.generateMap": false
+}

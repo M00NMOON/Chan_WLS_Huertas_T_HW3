@@ -24,7 +24,7 @@ const app = Vue.createApp({
     };
   },
   methods: {
-    getBook(id) {
+    getAlbum(id) {
       this.loading = true;
       console.log(id);
       fetch(
