@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Vinyl Pop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/grid.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="grid-con" id="app">
+      <div class="col-span-full">
+        <div>
+          <img src="images/logo.png" alt="Vinyl Pop Logo" class="logo" />
+        </div>
+
+        <p>Pop Classics, Fresh Spins.</p>
+        <p>Click on the Album to find our more</p>
+        <div v-if="loadingAlbums">
+          <svg
+            class="loader"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 200 200"
+          >
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin="0"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".8"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin="0.05"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".6"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".1"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".4"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".15"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".2"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".2"
+              ></animate>
+            </circle>
+          </svg>
+        </div>
+        <ul id="album-list">
+          <li v-for="album in albumData">
+            <h3>
+              Title:
+              <a href="#album" @click="getAlbum(`${album.id}`)"
+                >{{album.title}}</a
+              >
+            </h3>
+          </li>
+        </ul>
+      </div>
+      <div class="col-span-full" id="album">
+        <div v-if="loading">
+          <svg
+            class="loader"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 200 200"
+          >
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin="0"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".8"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin="0.05"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".6"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".1"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".4"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".15"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".2"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".2"
+              ></animate>
+            </circle>
+          </svg>
+        </div>
+      </div>
+      <section v-if="error">{{error}}</section>
+      <section id="info-box" v-if="name">
+        <div id="album-image"><img :src="`images/${image}`" /></div>
+
+        <div id="album-info">
+          <p><span class="title"></span>{{title}}</p>
+          <p><span class="title">Singer:</span>{{name}}</p>
+          <p><span class="title">Genre:</span>{{genre}}</p>
+          <p><span class="title">Release Date</span>{{release_date}}</p>
+          <p><span class="title"></span>{{description}}</p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
