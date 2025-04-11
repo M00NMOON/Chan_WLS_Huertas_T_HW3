@@ -18,12 +18,12 @@
   <body>
     <div class="grid-con" id="app">
       <div class="col-span-full">
-        <div>
-          <img src="images/logo.png" alt="Vinyl Pop Logo" class="logo" />
+        <div id="hero-sec">
+          <img src="images/logo.png" alt="Vinyl Pop Logo" id="logo" />
+          <p>Pop Classics, Fresh Spins.</p>
+          <p>Click on the Album to find our more</p>
         </div>
 
-        <p>Pop Classics, Fresh Spins.</p>
-        <p>Click on the Album to find our more</p>
         <div v-if="loadingAlbums">
           <svg
             class="loader"
@@ -128,8 +128,11 @@
         </div>
         <ul id="album-list">
           <li v-for="album in albumData">
+            <a href="#album" @click="getAlbum(`${album.id}`)">
+              <img :src="`images/${album.image_file}`" :alt="album.title" />
+            </a>
+
             <h3>
-              Title:
               <a href="#album" @click="getAlbum(`${album.id}`)"
                 >{{album.title}}</a
               >
@@ -246,7 +249,7 @@
         <div id="album-image"><img :src="`images/${image}`" /></div>
 
         <div id="album-info">
-          <p><span class="title"></span>{{title}}</p>
+          <p id="album-name"><span class="title"></span>{{title}}</p>
           <p><span class="title">Singer:</span>{{name}}</p>
           <p><span class="title">Genre:</span>{{genre}}</p>
           <p><span class="title">Release Date</span>{{release_date}}</p>

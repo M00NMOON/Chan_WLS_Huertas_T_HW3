@@ -1,54 +1,78 @@
-html, body {
-    scroll-behavior: smooth;
+@use "../abstracts/variables" as h;
+
+html,
+body {
+  scroll-behavior: smooth;
 }
 
 body {
-	font-family: "Lato", sans-serif;
+  font-family: h.$body-font-family;
 }
 
 h2 {
-    color: #fff;
-    margin-top: 20px;
-    font-size: 38px;
-    margin-bottom: 20px;
-    background-color: crimson;
-    padding: 20px;
-    border-radius: 0px 20px 0 0px;
+  color: #fff;
+  margin-top: 5px;
+  font-size: 70px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 0px 20px 0 0px;
+  font-family: h.$heading-font-family;
 }
 
 h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
+  font-size: 20px;
+  // margin-bottom: 10px;
+  font-weight: bold;
+  font-family: h.$heading-font-family;
 }
 
 p {
-    font-size: 20px;
-    margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: h.$body-font-family;
 }
 
-#book-list {
-    list-style-type: none;
-    padding: 0;
-    font-size: 18px;
-    margin-top: 40px;
-    padding-top: 40px;
-    border-top: dashed 1px #333;
-    border-bottom: dashed 1px #333;
-    padding-bottom: 60px;
+#album-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  margin-top: 5px;
+  text-align: center;
 }
 
-#book-list li {
-    margin-bottom: 30px;
+#album-list li {
+  width: 350px;
+  min-height: 540px; // adjust based on your content
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between; // keeps spacing even
+}
+
+#album-list h3 {
+  max-width: 350px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+}
+
+#album-list li img {
+  margin-top: 50px;
+  border-radius: 20px;
+  max-width: 350px;
 }
 
 .loader {
-    max-width: 100px;
+  max-width: 100px;
 }
 
 @media screen and (min-width: 768px) {
-	#book-list {
-        column-count: 3;
-    }
-
- }
+  #album-list {
+    column-count: 1;
+  }
+}
