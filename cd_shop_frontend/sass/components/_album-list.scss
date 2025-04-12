@@ -1,9 +1,9 @@
 @use "../abstracts/variables" as h;
 
-html,
-body {
-  scroll-behavior: smooth;
-}
+// html,
+// body {
+//   scroll-behavior: smooth;
+// }
 
 body {
   font-family: h.$body-font-family;
@@ -33,28 +33,84 @@ p {
 }
 
 #album-list {
-  list-style-type: none;
-  padding: 0;
+  list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  font-size: 35px;
-  margin-top: 5px;
-  text-align: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #a8a8a8;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-start;
+
+    li {
+      flex: 0 0 80%;
+      max-width: 80%;
+    }
+  }
 }
 
 #album-list li {
-  width: 350px;
-  min-height: 540px; // adjust based on your content
-  flex-direction: column;
-  align-items: center;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
   text-align: center;
-  justify-content: space-between; // keeps spacing even
+  overflow: hidden;
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 330px;
+
+  @media (max-width: 768px) {
+    width: 350px;
+    font-size: 16px;
+    padding-top: 20px;
+
+    #album-list li:hover {
+      background-color: #ff7448;
+      border-radius: 20px;
+      transition: all 0.5s ease-in-out;
+      width: 330px;
+    }
+  }
+}
+
+#album-list li:hover {
+  background-color: #ff7448;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Highlight effect for the selected <li> item */
+#album-list li.active {
+  background-color: #ff7448; /* Highlight color */
+  color: white; /* Text color */
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #album-list h3 {
+  display: block;
   max-width: 350px;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -62,17 +118,18 @@ p {
 }
 
 #album-list li img {
-  margin-top: 50px;
-  border-radius: 20px;
-  max-width: 350px;
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+  // padding-bottom: 10px;
+  // padding-top: 30px;
+  border-radius: 10px;
+
+  @media (min-width: 769px) {
+    width: 100%;
+  }
 }
 
 .loader {
   max-width: 100px;
-}
-
-@media screen and (min-width: 768px) {
-  #album-list {
-    column-count: 1;
-  }
 }
