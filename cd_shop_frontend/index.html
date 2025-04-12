@@ -13,18 +13,26 @@
     <link href="css/grid.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"
+    ></script>
     <script type="module" src="js/main.js"></script>
   </head>
   <body>
     <div class="grid-con" id="app">
-      <div class="col-span-full">
+      <div class="col-span-full m-col-span-full">
         <div id="hero-sec">
           <img src="images/logo.png" alt="Vinyl Pop Logo" id="logo" />
           <p>Pop Classics, Fresh Spins.</p>
           <p>Click on the Album to find our more</p>
         </div>
 
-        <div v-if="loadingAlbums">
+        <div v-if="loadingAlbum">
           <svg
             class="loader"
             xmlns="http://www.w3.org/2000/svg"
@@ -127,15 +135,12 @@
           </svg>
         </div>
         <ul id="album-list">
-          <li v-for="album in albumData">
-            <a href="#album" @click="getAlbum(`${album.id}`)">
+          <li v-for="album in albumData" :key="album.id" :data-id="album.id">
+            <a href="#album" @click="getAlbum(album.id)">
               <img :src="`images/${album.image_file}`" :alt="album.title" />
             </a>
-
             <h3>
-              <a href="#album" @click="getAlbum(`${album.id}`)"
-                >{{album.title}}</a
-              >
+              <a href="#album" @click="getAlbum(album.id)">{{ album.title }}</a>
             </h3>
           </li>
         </ul>
@@ -245,14 +250,14 @@
         </div>
       </div>
       <section v-if="error">{{error}}</section>
-      <section id="info-box" v-if="name">
+      <section id="info-box" class="col-span-full m-col-span-full" v-if="name">
         <div id="album-image"><img :src="`images/${image}`" /></div>
 
         <div id="album-info">
           <p id="album-name"><span class="title"></span>{{title}}</p>
           <p><span class="title">Singer:</span>{{name}}</p>
           <p><span class="title">Genre:</span>{{genre}}</p>
-          <p><span class="title">Release Date</span>{{release_date}}</p>
+          <p><span class="title">Release Date:</span>{{release_date}}</p>
           <p><span class="title"></span>{{description}}</p>
         </div>
       </section>
