@@ -2,7 +2,7 @@ export function createApp() {
   const app = Vue.createApp({
     created() {
       fetch(
-        "http://localhost/Chan_WLS_Huertas_T_HW3/lumen_cd_shop/public/albums"
+        "http://localhost:8888/Chan_WLS_Huertas_T_HW3/lumen_cd_shop/public/albums"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -31,7 +31,7 @@ export function createApp() {
         this.loading = true;
 
         fetch(
-          `http://localhost/Chan_WLS_Huertas_T_HW3/lumen_cd_shop/public/albums/${id}`
+          `http://localhost:8888/Chan_WLS_Huertas_T_HW3/lumen_cd_shop/public/albums/${id}`
         )
           .then((response) => response.json())
           .then((data) => {
